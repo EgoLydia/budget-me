@@ -284,7 +284,7 @@ p {
 }
 
 main {
-  max-width: 1500px;
+  max-width: 1700px;
   width: 100%;
   padding: var(--space-md) var(--space-md) var(--space-xl);
   margin-inline: auto;
@@ -306,7 +306,7 @@ nav {
   align-items: center;
   width: 100%;
   padding: var(--space-md);
-  max-width: 1500px;
+  max-width: 1700px;
   margin-inline: auto;
 }
 
