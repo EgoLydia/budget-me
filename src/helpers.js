@@ -35,6 +35,13 @@ export const createExpense = ({ name, amount, budgetId }) => {
 
     return localStorage.setItem("expenses", JSON.stringify([...existingExpenses, newItem]))
 }
+
+//get all items from LS
+export const getAllMatchingItems = ({ category, key, value }) => {
+    const data = fetchData(category) ?? []
+    return data.filter((item) => item[key] === value)
+}
+
 //delete expense item
 export const deleteItem = ({ key, id }) => {
     const existingData = fetchData(key)
