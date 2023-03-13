@@ -35,6 +35,14 @@ export const createExpense = ({ name, amount, budgetId }) => {
 
     return localStorage.setItem("expenses", JSON.stringify([...existingExpenses, newItem]))
 }
+//delete expense item
+export const deleteItem = ({ key, id }) => {
+    const existingData = fetchData(key)
+    if (id) {
+        const newData = existingData.filter((item) => item.id !== id)
+        return localStorage.setItem(key, JSON.stringify(newData))
+
+    }
     return localStorage.removeItem(key)
 }//currency
 export const formatCurrency = (amount) => {
@@ -59,3 +67,13 @@ export const formatDateToString = (epoch) => {
     return new Date(epoch).toLocaleDateString()
 }
 
+//total spent by budget
+export const calculateSpentByBudget = (budgetId) => {
+    const expenses = fetchData("expenses") ?? [];
+    const budgetSpent = expenses.reduce((acc, expense) => {
+        if (expense.budgetId !== budgetId) return acc
+
+        return acc += expense.amount
+    }, 0)
+    return budgetSpent;
+}
