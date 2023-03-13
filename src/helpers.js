@@ -1,3 +1,5 @@
+export const waitt = () => new Promise(res => setTimeout(res, Math.random() * 800))
+
 const generateRandColor = () => {
     const existingBudgetLength = fetchData("budgets")?.length ?? 0;
     return `${existingBudgetLength * 34} 65% 50%`
@@ -7,7 +9,11 @@ export const fetchData = (key) => {
     return JSON.parse(localStorage.getItem(key));
 };
 
-export const deleteItem = ({ key }) => {
+//delete user
+// export const deleteItem = ({ key }) => {
+//     return localStorage.removeItem(key)
+// }
+
 //create budget
 export const createBudget = ({ name, amount }) => {
     const newItem = {
@@ -51,7 +57,17 @@ export const deleteItem = ({ key, id }) => {
 
     }
     return localStorage.removeItem(key)
-}//currency
+}
+
+//edit expense item
+export const editItem = ({ key, id }) => {
+    const data = fetchData(key)
+
+    // return localStorage.removeItem(key)
+}
+
+//formatting
+//currency
 export const formatCurrency = (amount) => {
     return amount.toLocaleString(undefined, {
         style: 'currency',
