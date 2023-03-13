@@ -1,8 +1,11 @@
-import { Form } from 'react-router-dom'
+import { Form, useFetcher } from 'react-router-dom'
 import { UserPlusIcon } from '@heroicons/react/24/solid'
 import illustration from '../assets/illustration.jpg'
 
 const Intro = () => {
+    const fetcher = useFetcher();
+    const isSubmitting = fetcher.state === "submitting";
+
     return (
         <div className="intro">
             <div>
@@ -20,7 +23,8 @@ const Intro = () => {
                         aria-label='Your name'
                         autoComplete='given-name'
                     />
-                    <button type='submit' className='btn btn--dark'>
+                    <input type="hidden" name='_action' value="newUser" />
+                    <button type='submit' className='btn btn--dark' disabled={isSubmitting}>
                         <span>Create Account</span>
                         <UserPlusIcon width={20} />
                     </button>
