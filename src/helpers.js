@@ -36,4 +36,26 @@ export const createExpense = ({ name, amount, budgetId }) => {
     return localStorage.setItem("expenses", JSON.stringify([...existingExpenses, newItem]))
 }
     return localStorage.removeItem(key)
+}//currency
+export const formatCurrency = (amount) => {
+    return amount.toLocaleString(undefined, {
+        style: 'currency',
+        currency: 'NGN'
+    }
+    )
 }
+
+//percentage
+export const formatPercentage = (amount) => {
+    return amount.toLocaleString(undefined, {
+        style: 'percent',
+        minimumFractionDigits: 0,
+    })
+}
+
+//date
+
+export const formatDateToString = (epoch) => {
+    return new Date(epoch).toLocaleDateString()
+}
+
